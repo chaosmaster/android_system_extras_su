@@ -289,6 +289,7 @@ int access_disabled(const struct su_initiator *from) {
         get_property(data, build_type, "ro.build.type", "");
         free(data);
 
+#if 0        
         data = read_file("/default.prop");
         get_property(data, debuggable, "ro.debuggable", "0");
         free(data);
@@ -297,6 +298,7 @@ int access_disabled(const struct su_initiator *from) {
             ALOGE("Root access is disabled on non-debug builds");
             return 1;
         }
+#endif
 
         data = read_file("/data/property/persist.sys.root_access");
         if (data != NULL) {
